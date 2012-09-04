@@ -5,6 +5,7 @@ import com.jasonllinux.app.user.User;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -62,8 +63,12 @@ public class AuthActivity extends Activity {
 				System.out.println("name: "+name);
 				System.out.println("passwd: "+passwd);
 				//验证成功
-				//TODO 跳转到首页
-				
+				//TODO 跳转到首页--------------------------
+				Intent intent = new Intent();              
+	            intent.setClass(AuthActivity.this, HomeActivity.class);          
+	                //调用一个新的Activity
+	            startActivity(intent);
+	            //------------------------------
 				//验证失败
 				//TODO 
 			}

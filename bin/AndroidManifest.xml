@@ -22,7 +22,7 @@
         </activity>
         
         <activity
-            android:name=".TabAcitvity"
+            android:name=".HomeActivity"
             android:label="@string/action_bar"
             android:uiOptions="splitActionBarWhenNarrow"
             

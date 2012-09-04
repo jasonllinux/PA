@@ -12,12 +12,10 @@
     <string name="button_reg">Register</string>
     <string name="text_username">User</string>
     <string name="text_passwd">PassWord</string>
+   
     
-    <string name="tab_name_1">Home</string>
-    <string name="tab_name_2">TODO</string>
-    <string name="tab_name_3">Money</string>
-    <string name="tab_name_4">About</string>
-    
-    <string name="artist">artist</string>
+    <string name="fragment_1">Home</string>
+    <string name="fragment_2">ToDo</string>
+    <string name="fragment_3">Money</string>
 
 </resources>
