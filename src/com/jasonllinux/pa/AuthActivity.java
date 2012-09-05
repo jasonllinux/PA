@@ -1,6 +1,6 @@
 package com.jasonllinux.pa;
 
-import com.jasonllinux.app.db.DBHelper;
+import com.jasonllinux.app.db.UserAuthDataSource;
 import com.jasonllinux.app.user.User;
 
 import android.os.Bundle;
@@ -20,8 +20,7 @@ public class AuthActivity extends Activity {
 	private EditText edit_user;
 	private EditText edit_passwd;
 	
-	private DBHelper dbHelper;
-	
+	private UserAuthDataSource userAuthDataBase;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,6 +39,10 @@ public class AuthActivity extends Activity {
         //add listener 
         button_login.setOnClickListener(loginClickListener);
         
+        //db
+        userAuthDataBase = new UserAuthDataSource(this);
+        userAuthDataBase.open();
+        
         
     }
 
@@ -54,16 +57,15 @@ public class AuthActivity extends Activity {
     	public void onClick(View v) {
 			String name = edit_user.getText().toString();
 			String passwd = edit_passwd.getText().toString();
-			//TODO 调试一下
 			if(name==null || passwd==null) {
 				//TODO 提示 输入
 			}else {
-				//验证
+				//验证 Query
 				//连接数据库
 				System.out.println("name: "+name);
 				System.out.println("passwd: "+passwd);
 				//验证成功
-				//TODO 跳转到首页--------------------------
+				//TODO 跳转到首页-----传输 UserName---------------------
 				Intent intent = new Intent();              
 	            intent.setClass(AuthActivity.this, HomeActivity.class);          
 	                //调用一个新的Activity
@@ -75,14 +77,17 @@ public class AuthActivity extends Activity {
 		}
 	};
     
-    //TODO add user
-    private void addUser(User user) {
-    	
-    }
     
-    //TODO update user
-    private void updateUser(User user) {
-    	
+    @Override
+    protected void onResume() {
+      userAuthDataBase.open();
+      super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+      userAuthDataBase.close();
+      super.onPause();
     }
     
     
