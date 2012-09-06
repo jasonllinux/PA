@@ -20,6 +20,9 @@ public final class R {
         public static final int button_register=0x7f070006;
         public static final int edit_passwd=0x7f070003;
         public static final int edit_username=0x7f070001;
+        public static final int menu_1=0x7f07000b;
+        public static final int menu_2=0x7f07000c;
+        public static final int menu_3=0x7f07000d;
         public static final int menu_settings=0x7f07000a;
         public static final int tab_demo_tv1=0x7f070007;
         public static final int tab_demo_tv2=0x7f070008;
@@ -29,7 +32,10 @@ public final class R {
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
-        public static final int tab_host=0x7f030001;
+        public static final int fragment_home=0x7f030001;
+        public static final int fragment_money=0x7f030002;
+        public static final int fragment_todo=0x7f030003;
+        public static final int tab_host=0x7f030004;
     }
     public static final class menu {
         public static final int activity_main=0x7f060000;
