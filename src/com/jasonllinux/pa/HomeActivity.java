@@ -1,5 +1,6 @@
 package com.jasonllinux.pa;
 
+import com.jasonllinux.app.social.SinaAuthorizeActivity;
 import com.jasonllinux.fragment.HomeFragment;
 import com.jasonllinux.fragment.MoneyFragment;
 import com.jasonllinux.fragment.TestFragment;
@@ -16,13 +17,19 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
 
 public class HomeActivity extends Activity {
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		
 		//接收数据
         Bundle bundle = getIntent().getExtras();    
         String data = bundle.getString("name");//读出数据
@@ -38,7 +45,7 @@ public class HomeActivity extends Activity {
 	    Tab tab = actionBar.newTab().setText(R.string.fragment_1)
 								    .setTabListener(new TabListener<HomeFragment>(
                                     this, "frag_todo", HomeFragment.class)
-                                    );
+                            );
 	    actionBar.addTab(tab);
 	    
 	    tab = actionBar.newTab().setText(R.string.fragment_2)
@@ -70,7 +77,24 @@ public class HomeActivity extends Activity {
         return true;  
     }
     
-    
+    private OnClickListener toSinaAuthlistener = new OnClickListener() {
+		
+		public void onClick(View view) {
+//			System.out.println("to Sina Auth Button");
+			Intent intent = new Intent();
+			intent.setClass(HomeActivity.this, SinaAuthorizeActivity.class );
+			HomeActivity.this.startActivity(intent);
+		}
+	};
+	
+	   private OnClickListener simpleListener = new OnClickListener() {
+			
+			public void onClick(View view) {
+				System.out.println("Simple Button Listener");
+			}
+		};
+	
+	
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

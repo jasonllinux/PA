@@ -14,7 +14,7 @@
         android:uiOptions="splitActionBarWhenNarrow"
         >
         <activity
-            android:name=".AuthActivity"
+            android:name=".FrontActivity"
             android:label="@string/auth_activity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,14 +23,25 @@
             </intent-filter>
         </activity>
         
+  
         <activity
-            android:name=".HomeActivity"
-            android:label="@string/action_bar"
-            
-            
+        	android:name=".HomeActivity"
+        	android:label="Home"    
+            >
+        </activity>
+        
+        <activity
+            android:name="com.jasonllinux.app.social.SinaAuthorizeActivity"
+            android:label="SinaAuth"
+     
+            >
+            </activity>
+        <activity
+            android:name="com.jasonllinux.app.social.TestSinaAuthActivity"
+            android:label="TestSinaAuth"
             >
             
-        </activity> 
+        </activity>
           
     </application>
     <!-- 关闭应用程序的权限 -->

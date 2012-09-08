@@ -1,6 +1,7 @@
 package com.jasonllinux.pa;
 
 import com.jasonllinux.app.db.UserAuthDataSource;
+import com.jasonllinux.app.social.SinaAuthorizeActivity;
 import com.jasonllinux.app.user.User;
 
 import android.os.Bundle;
@@ -12,11 +13,13 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class AuthActivity extends Activity {
+public class FrontActivity extends Activity {
 	
 	private Button button_login ;
 	private Button button_exit;
 	private Button button_reg;
+	private Button button_test;
+	
 	private EditText edit_user;
 	private EditText edit_passwd;
 	
@@ -31,6 +34,7 @@ public class AuthActivity extends Activity {
         button_login = (Button) findViewById(R.id.button_login);
         button_exit = (Button) findViewById(R.id.button_exit);
         button_reg = (Button) findViewById(R.id.button_register);
+        button_test = (Button) findViewById(R.id.button_test);
         edit_user = (EditText) findViewById(R.id.edit_username);
         edit_passwd = (EditText) findViewById(R.id.edit_username);
         
@@ -39,6 +43,7 @@ public class AuthActivity extends Activity {
         //绑定监听器 
         button_login.setOnClickListener(loginClickListener);
         button_exit.setOnClickListener(exitOnClickListener);
+        button_test.setOnClickListener(testOnClickListener);
         
         //db
         userAuthDataBase = new UserAuthDataSource(this);
@@ -65,16 +70,15 @@ public class AuthActivity extends Activity {
 				//连接数据库
 				System.out.println("name: "+name);
 				System.out.println("passwd: "+passwd);
-				//验证成功
+				//若验证成功
 				//TODO 跳转到首页-----传输 UserName---------------------
 				Intent intent = new Intent();              
-	            intent.setClass(AuthActivity.this, HomeActivity.class);   
-	            //传递数据
+	            intent.setClass(FrontActivity.this, HomeActivity.class);   
+	            //添加传递数据
 	            Bundle mBundle = new Bundle();  
 	            mBundle.putString("name", "jasonllinux");//压入数据  
 	            intent.putExtras(mBundle);  
-	                //调用一个新的Activity
-	            startActivity(intent);
+	            FrontActivity.this.startActivity(intent);
 	            //------------------------------
 				//验证失败
 				//TODO 
@@ -87,8 +91,15 @@ public class AuthActivity extends Activity {
 		public void onClick(View arg0) {
 			//exit
 			System.exit(0);
-			//finish
-//			finish();
+		}
+		
+	};
+	
+	private OnClickListener testOnClickListener =  new OnClickListener() {
+		public void onClick(View arg0) {
+			Intent intent = new Intent();
+			intent.setClass(FrontActivity.this, SinaAuthorizeActivity.class);
+			FrontActivity.this.startActivity(intent);
 		}
 		
 	};

@@ -27,7 +27,7 @@ import com.weibo.net.WeiboParameters;
  * @author ZhangJie (zhangjie2@staff.sina.com.cn)
  */
 //
-public class TestActivity extends Activity {
+public class TestSinaAuthActivity extends Activity {
 //    TextView mResult;
 //    Weibo mWeibo = Weibo.getInstance();
 //
