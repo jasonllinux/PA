@@ -48,18 +48,20 @@
        
         />
     
-    <Button
-	    android:id="@+id/button_cancel"
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
-	    android:text="@string/button_cancel"
-	   
-    	/>
+
     <Button
 	    android:id="@+id/button_register"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:text="@string/button_reg"
+	   
+    	/>
+    
+        <Button
+	    android:id="@+id/button_exit"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/button_exit"
 	   
     	/>
 </LinearLayout>

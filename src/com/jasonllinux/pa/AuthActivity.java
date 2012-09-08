@@ -15,7 +15,7 @@ import android.widget.EditText;
 public class AuthActivity extends Activity {
 	
 	private Button button_login ;
-	private Button button_cancel;
+	private Button button_exit;
 	private Button button_reg;
 	private EditText edit_user;
 	private EditText edit_passwd;
@@ -29,15 +29,16 @@ public class AuthActivity extends Activity {
         
         //widget
         button_login = (Button) findViewById(R.id.button_login);
-        button_cancel = (Button) findViewById(R.id.button_cancel);
+        button_exit = (Button) findViewById(R.id.button_exit);
         button_reg = (Button) findViewById(R.id.button_register);
         edit_user = (EditText) findViewById(R.id.edit_username);
         edit_passwd = (EditText) findViewById(R.id.edit_username);
         
         //db -> new
         
-        //add listener 
+        //绑定监听器 
         button_login.setOnClickListener(loginClickListener);
+        button_exit.setOnClickListener(exitOnClickListener);
         
         //db
         userAuthDataBase = new UserAuthDataSource(this);
@@ -67,7 +68,11 @@ public class AuthActivity extends Activity {
 				//验证成功
 				//TODO 跳转到首页-----传输 UserName---------------------
 				Intent intent = new Intent();              
-	            intent.setClass(AuthActivity.this, HomeActivity.class);          
+	            intent.setClass(AuthActivity.this, HomeActivity.class);   
+	            //传递数据
+	            Bundle mBundle = new Bundle();  
+	            mBundle.putString("name", "jasonllinux");//压入数据  
+	            intent.putExtras(mBundle);  
 	                //调用一个新的Activity
 	            startActivity(intent);
 	            //------------------------------
@@ -76,7 +81,17 @@ public class AuthActivity extends Activity {
 			}
 		}
 	};
-    
+	
+	//退出程序Button监听器
+	private OnClickListener exitOnClickListener =  new OnClickListener() {
+		public void onClick(View arg0) {
+			//exit
+			System.exit(0);
+			//finish
+//			finish();
+		}
+		
+	};
     
     @Override
     protected void onResume() {

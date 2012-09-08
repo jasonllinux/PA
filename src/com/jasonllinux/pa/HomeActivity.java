@@ -10,9 +10,11 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 
 
@@ -21,8 +23,13 @@ public class HomeActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		//接收数据
+        Bundle bundle = getIntent().getExtras();    
+        String data = bundle.getString("name");//读出数据
+//        System.out.println("name :" + data);
 		 // setup Action Bar for tabs
 	    ActionBar actionBar = getActionBar();
+	    
 	    actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 	    // remove the activity title to make space for tabs
 	    actionBar.setDisplayShowTitleEnabled(false);
@@ -51,7 +58,8 @@ public class HomeActivity extends Activity {
 	
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.home_menu, menu);
+    	MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.home_menu, menu);
     	
 //        MenuItem add = menu.add(0, 1, 0, "Save");  
 //        MenuItem open = menu.add(0, 2, 1, "Open");  
@@ -60,6 +68,21 @@ public class HomeActivity extends Activity {
 //        open.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);  
 //        close.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);  
         return true;  
+    }
+    
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // app icon in action bar clicked; go home
+                Intent intent = new Intent(this, HomeActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 	
 	

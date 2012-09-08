@@ -13,21 +13,21 @@ public class MoneyFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
-        System.out.println("TODO--->onCreate");
+//        System.out.println("TODO--->onCreate");
         super.onCreate(savedInstanceState);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        System.out.println("TODO--->onCreateView");
+//        System.out.println("TODO--->onCreateView");
         return inflater.inflate(R.layout.fragment_money, container, false);
     }
 
     @Override
     public void onStop()
     {
-        System.out.println("TODO--->onStop");
+//        System.out.println("TODO--->onStop");
         super.onStop();
     }
 
