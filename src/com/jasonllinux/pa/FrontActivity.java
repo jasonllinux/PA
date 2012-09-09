@@ -1,6 +1,7 @@
 package com.jasonllinux.pa;
 
 import com.jasonllinux.app.db.UserAuthDataSource;
+import com.jasonllinux.app.face.FaceActivity;
 import com.jasonllinux.app.social.SinaAuthorizeActivity;
 import com.jasonllinux.app.user.User;
 
@@ -22,7 +23,8 @@ public class FrontActivity extends Activity {
 	private Button button_login ;
 	private Button button_exit;
 	private Button button_reg;
-	private Button button_test;
+	private Button button_test_sina;
+	private Button button_test_face;
 	
 	private EditText edit_user;
 	private EditText edit_passwd;
@@ -38,7 +40,9 @@ public class FrontActivity extends Activity {
         button_login = (Button) findViewById(R.id.button_login);
         button_exit = (Button) findViewById(R.id.button_exit);
         button_reg = (Button) findViewById(R.id.button_register);
-        button_test = (Button) findViewById(R.id.button_test);
+        button_test_sina = (Button) findViewById(R.id.button_test);
+        button_test_face = (Button) findViewById(R.id.button_testface);
+        
         edit_user = (EditText) findViewById(R.id.edit_username);
         edit_passwd = (EditText) findViewById(R.id.edit_username);
         
@@ -47,7 +51,15 @@ public class FrontActivity extends Activity {
         //绑定监听器 
         button_login.setOnClickListener(loginClickListener);
         button_exit.setOnClickListener(exitOnClickListener);
-        button_test.setOnClickListener(testOnClickListener);
+        button_test_sina.setOnClickListener(testOnClickListener);
+        button_test_face.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View arg0) {
+				Intent intent = new Intent();
+				intent.setClass(FrontActivity.this, FaceActivity.class);
+				startActivity(intent);
+			}
+		});
         
         //db
         userAuthDataBase = new UserAuthDataSource(this);
@@ -72,8 +84,8 @@ public class FrontActivity extends Activity {
 			}else {
 				//验证 Query
 				//连接数据库
-				System.out.println("name: "+name);
-				System.out.println("passwd: "+passwd);
+//				System.out.println("name: "+name);
+//				System.out.println("passwd: "+passwd);
 				//若验证成功
 				//TODO 跳转到首页-----传输 UserName---------------------
 				Intent intent = new Intent();              
@@ -124,14 +136,9 @@ public class FrontActivity extends Activity {
     //按下back键，退出确认
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-//               Log.v(LOG_TAG, "onKeyDown: " + event.getKeyCode());
-    
-           if (keyCode == KeyEvent.KEYCODE_BACK){                    
-//                   SystemProperties.set("ts.config.calibrate", "break");
-//                   AndroidCalibrate.this.finish();
-//        	   System.exit(0);
-        		System.out.println("should leave?");
-        	   showDialog(this);
+           if (keyCode == KeyEvent.KEYCODE_BACK){  
+        	   
+        	   showExitDialog(this);
                    return true;
            }
            return super.onKeyDown(keyCode, event);
@@ -139,7 +146,7 @@ public class FrontActivity extends Activity {
     
 
     //TODO 修改布局文件
-    private void showDialog(Context context) {
+    private void showExitDialog(Context context) {
 //    	System.out.println("show Dialog");
     	AlertDialog.Builder builder = new AlertDialog.Builder(context); 
     	builder.setTitle(R.string.alter_exit_title);  
@@ -148,14 +155,12 @@ public class FrontActivity extends Activity {
         builder.setPositiveButton(R.string.alter_exit_cancel, new DialogInterface.OnClickListener() {
 
 			public void onClick(DialogInterface arg0, int arg1) {
-//				System.out.println("alter dialog, cancel");
 				
 			} });
         
         builder.setNegativeButton(R.string.alter_exit_leave, new DialogInterface.OnClickListener() {
 
     			public void onClick(DialogInterface arg0, int arg1) {
-//    				System.out.println("alter dialog, leave");
     				System.exit(0);
     				
     			} });

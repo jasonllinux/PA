@@ -64,11 +64,18 @@
 	    android:text="@string/button_exit"
 	   
     	/>
-       <Button
+    <Button
 	    android:id="@+id/button_test"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:text="Test"
+	   
+    	/>
+        <Button
+	    android:id="@+id/button_testface"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:text="TestFace"
 	   
     	/>
 </LinearLayout>
