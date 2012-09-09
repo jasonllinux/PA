@@ -21,7 +21,7 @@ import android.widget.EditText;
 public class FrontActivity extends Activity {
 	
 	private Button button_login ;
-	private Button button_exit;
+//	private Button button_exit;
 	private Button button_reg;
 	private Button button_test_sina;
 	private Button button_test_face;
@@ -38,7 +38,7 @@ public class FrontActivity extends Activity {
         
         //widget
         button_login = (Button) findViewById(R.id.button_login);
-        button_exit = (Button) findViewById(R.id.button_exit);
+//        button_exit = (Button) findViewById(R.id.button_exit);
         button_reg = (Button) findViewById(R.id.button_register);
         button_test_sina = (Button) findViewById(R.id.button_test);
         button_test_face = (Button) findViewById(R.id.button_testface);
@@ -50,7 +50,7 @@ public class FrontActivity extends Activity {
         
         //绑定监听器 
         button_login.setOnClickListener(loginClickListener);
-        button_exit.setOnClickListener(exitOnClickListener);
+//        button_exit.setOnClickListener(exitOnClickListener);
         button_test_sina.setOnClickListener(testOnClickListener);
         button_test_face.setOnClickListener(new OnClickListener() {
 			
@@ -103,13 +103,13 @@ public class FrontActivity extends Activity {
 	};
 	
 	//退出程序Button监听器
-	private OnClickListener exitOnClickListener =  new OnClickListener() {
-		public void onClick(View arg0) {
-			//exit
-			System.exit(0);
-		}
-		
-	};
+//	private OnClickListener exitOnClickListener =  new OnClickListener() {
+//		public void onClick(View arg0) {
+//			//exit
+//			System.exit(0);
+//		}
+//		
+//	};
 	
 	private OnClickListener testOnClickListener =  new OnClickListener() {
 		public void onClick(View arg0) {
