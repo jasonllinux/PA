@@ -49,6 +49,10 @@ public final class R {
     }
     public static final class string {
         public static final int action_bar=0x7f040002;
+        public static final int alter_exit_cancel=0x7f040014;
+        public static final int alter_exit_leave=0x7f040013;
+        public static final int alter_exit_message=0x7f040012;
+        public static final int alter_exit_title=0x7f040011;
         public static final int app_name=0x7f040000;
         public static final int auth_activity=0x7f040001;
         public static final int button_exit=0x7f040006;

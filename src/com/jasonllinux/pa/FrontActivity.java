@@ -6,7 +6,11 @@ import com.jasonllinux.app.user.User;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -116,6 +120,49 @@ public class FrontActivity extends Activity {
       super.onPause();
     }
     
+    
+    //按下back键，退出确认
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//               Log.v(LOG_TAG, "onKeyDown: " + event.getKeyCode());
+    
+           if (keyCode == KeyEvent.KEYCODE_BACK){                    
+//                   SystemProperties.set("ts.config.calibrate", "break");
+//                   AndroidCalibrate.this.finish();
+//        	   System.exit(0);
+        		System.out.println("should leave?");
+        	   showDialog(this);
+                   return true;
+           }
+           return super.onKeyDown(keyCode, event);
+    }
+    
+
+    //TODO 修改布局文件
+    private void showDialog(Context context) {
+//    	System.out.println("show Dialog");
+    	AlertDialog.Builder builder = new AlertDialog.Builder(context); 
+    	builder.setTitle(R.string.alter_exit_title);  
+        builder.setMessage(R.string.alter_exit_message);  
+        
+        builder.setPositiveButton(R.string.alter_exit_cancel, new DialogInterface.OnClickListener() {
+
+			public void onClick(DialogInterface arg0, int arg1) {
+//				System.out.println("alter dialog, cancel");
+				
+			} });
+        
+        builder.setNegativeButton(R.string.alter_exit_leave, new DialogInterface.OnClickListener() {
+
+    			public void onClick(DialogInterface arg0, int arg1) {
+//    				System.out.println("alter dialog, leave");
+    				System.exit(0);
+    				
+    			} });
+        
+        builder.show(); 
+    	
+    }
     
     
 }
