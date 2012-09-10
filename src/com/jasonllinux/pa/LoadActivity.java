@@ -10,7 +10,7 @@ import android.view.WindowManager;
 public class LoadActivity extends Activity {
 	
     //display time
-    private static final int LOAD_DISPLAY_TIME = 1500;
+    private static final int LOAD_DISPLAY_TIME = 1800;
     
     @Override
     public void onCreate(Bundle savedInstanceState) {

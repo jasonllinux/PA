@@ -13,6 +13,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -25,6 +26,7 @@ public class FrontActivity extends Activity {
 	private Button button_reg;
 	private Button button_test_sina;
 	private Button button_test_face;
+//	private Menu button_settting;
 	
 	private EditText edit_user;
 	private EditText edit_passwd;
@@ -42,6 +44,7 @@ public class FrontActivity extends Activity {
         button_reg = (Button) findViewById(R.id.button_register);
         button_test_sina = (Button) findViewById(R.id.button_test);
         button_test_face = (Button) findViewById(R.id.button_testface);
+//        button_settting = (Menu) findViewById(R.id.menu_settings);
         
         edit_user = (EditText) findViewById(R.id.edit_username);
         edit_passwd = (EditText) findViewById(R.id.edit_username);
@@ -61,14 +64,47 @@ public class FrontActivity extends Activity {
 			}
 		});
         
+        //转到设置页面
+        
+//        button_settting.setOnClickListener(new OnClickListener() {
+//			
+//			public void onClick(View view) {
+//				Intent intent = new Intent();
+////				intent.setClass(FrontActivity.this, SettingActivity.class);
+////				startActivity(intent);
+//			}
+//		});
+        
         //db
         userAuthDataBase = new UserAuthDataSource(this);
         userAuthDataBase.open();
         
         
     }
+    
+    
 
     @Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+    	 switch (item.getItemId()) {  
+    	 case R.id.menu_settings :
+    		 goToSetting();
+    		 break;
+    	 default:
+    		 break;
+    	 }
+    	 return super.onOptionsItemSelected(item);
+	}
+    
+    private void goToSetting() {
+		Intent intent = new Intent();
+		intent.setClass(FrontActivity.this, SettingActivity.class);
+		startActivity(intent);
+    }
+
+
+
+	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;

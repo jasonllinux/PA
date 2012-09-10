@@ -23,23 +23,21 @@
         <activity
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar"
-           
-            android:name=".LoadActivity"
-            
+            android:name=".LoadActivity"          
             >
-               <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
         <activity
             android:name=".FrontActivity"
-            android:label="@string/auth_activity" >
-         
+            android:label="@string/auth_activity"
+             >
         </activity>
         
-  
         <activity
         	android:name=".HomeActivity"
         	android:label="Home"    
@@ -49,20 +47,25 @@
         <activity
             android:name="com.jasonllinux.app.social.SinaAuthorizeActivity"
             android:label="SinaAuth"
-     
             >
-            </activity>
+        </activity>
+        
         <activity
             android:name="com.jasonllinux.app.social.TestSinaAuthActivity"
             android:label="TestSinaAuth"
             >
-            
         </activity>
-           <activity
+        
+        <activity
             android:name="com.jasonllinux.app.face.FaceActivity"
             android:label="TestFaceAuth"
+            >    
+        </activity>
+        
+        <activity
+            android:name=".SettingActivity"
+            android:label="设置"
             >
-            
         </activity>
     
     </application>
