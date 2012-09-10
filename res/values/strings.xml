@@ -18,6 +18,7 @@
     <string name="fragment_1">Home</string>
     <string name="fragment_2">ToDo</string>
     <string name="fragment_3">Money</string>
+    <string name="fragment_4">Dict</string>
     
     <string name="menu_1">Menu1 </string>
     <string name="menu_2">Menu2 </string>

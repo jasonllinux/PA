@@ -1,6 +1,7 @@
 package com.jasonllinux.pa;
 
 import com.jasonllinux.app.social.SinaAuthorizeActivity;
+import com.jasonllinux.fragment.DictFragment;
 import com.jasonllinux.fragment.HomeFragment;
 import com.jasonllinux.fragment.MoneyFragment;
 import com.jasonllinux.fragment.TestFragment;
@@ -57,6 +58,12 @@ public class HomeActivity extends Activity {
         tab = actionBar.newTab().setText(R.string.fragment_3)
 			    .setTabListener(new TabListener<MoneyFragment>(
                 this, "frag3", MoneyFragment.class)
+                );
+        actionBar.addTab(tab);
+        
+        tab = actionBar.newTab().setText(R.string.fragment_4)
+			    .setTabListener(new TabListener<DictFragment>(
+                this, "frag4", DictFragment.class)
                 );
         actionBar.addTab(tab);
 	    
