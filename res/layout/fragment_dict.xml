@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="亲，背单词了!"
+        android:textSize="40dp" 
+        android:textColor="#999999"
+        />
+    <TextView
+        android:text="HelloWorld" 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        />
+     <TextView
+        android:text="你好世界" 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="40dp"
+        />
+    
+    <Button
+        android:text="Prev"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        />
+    <Button
+        android:text="发音"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        />
+    <Button
+        android:text="Next"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        />
+
+
+</LinearLayout>
