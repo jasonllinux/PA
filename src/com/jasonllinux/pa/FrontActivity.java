@@ -22,11 +22,9 @@ import android.widget.EditText;
 public class FrontActivity extends Activity {
 	
 	private Button button_login ;
-//	private Button button_exit;
 	private Button button_reg;
 	private Button button_test_sina;
 	private Button button_test_face;
-//	private Menu button_settting;
 	
 	private EditText edit_user;
 	private EditText edit_passwd;
@@ -38,13 +36,10 @@ public class FrontActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        //widget
         button_login = (Button) findViewById(R.id.button_login);
-//        button_exit = (Button) findViewById(R.id.button_exit);
         button_reg = (Button) findViewById(R.id.button_register);
-        button_test_sina = (Button) findViewById(R.id.button_test);
+        button_test_sina = (Button) findViewById(R.id.button_test_sina);
         button_test_face = (Button) findViewById(R.id.button_testface);
-//        button_settting = (Menu) findViewById(R.id.menu_settings);
         
         edit_user = (EditText) findViewById(R.id.edit_username);
         edit_passwd = (EditText) findViewById(R.id.edit_username);
@@ -53,7 +48,6 @@ public class FrontActivity extends Activity {
         
         //绑定监听器 
         button_login.setOnClickListener(loginClickListener);
-//        button_exit.setOnClickListener(exitOnClickListener);
         button_test_sina.setOnClickListener(testOnClickListener);
         button_test_face.setOnClickListener(new OnClickListener() {
 			
@@ -64,16 +58,6 @@ public class FrontActivity extends Activity {
 			}
 		});
         
-        //转到设置页面
-        
-//        button_settting.setOnClickListener(new OnClickListener() {
-//			
-//			public void onClick(View view) {
-//				Intent intent = new Intent();
-////				intent.setClass(FrontActivity.this, SettingActivity.class);
-////				startActivity(intent);
-//			}
-//		});
         
         //db
         userAuthDataBase = new UserAuthDataSource(this);
@@ -82,8 +66,13 @@ public class FrontActivity extends Activity {
         
     }
     
-    
-
+	@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_main, menu);
+        return true;
+    }
+	
+//设置菜单监听器
     @Override
 	public boolean onOptionsItemSelected(MenuItem item) {
     	 switch (item.getItemId()) {  
@@ -102,13 +91,6 @@ public class FrontActivity extends Activity {
 		startActivity(intent);
     }
 
-
-
-	@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_main, menu);
-        return true;
-    }
     
     private OnClickListener loginClickListener = new OnClickListener() {
 		
@@ -138,14 +120,6 @@ public class FrontActivity extends Activity {
 		}
 	};
 	
-	//退出程序Button监听器
-//	private OnClickListener exitOnClickListener =  new OnClickListener() {
-//		public void onClick(View arg0) {
-//			//exit
-//			System.exit(0);
-//		}
-//		
-//	};
 	
 	private OnClickListener testOnClickListener =  new OnClickListener() {
 		public void onClick(View arg0) {

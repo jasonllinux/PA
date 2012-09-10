@@ -19,7 +19,7 @@ public final class R {
     public static final class id {
         public static final int button_login=0x7f070005;
         public static final int button_register=0x7f070006;
-        public static final int button_test=0x7f070007;
+        public static final int button_test_sina=0x7f070007;
         public static final int button_testface=0x7f070008;
         public static final int button_toSinaAuth=0x7f070009;
         public static final int button_update_todo=0x7f07000a;
