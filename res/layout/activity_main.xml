@@ -65,11 +65,17 @@
 	    android:text="TestSinaAuth"
 	   
     	/>
-        <Button
+    <Button
 	    android:id="@+id/button_testface"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:text="TestFace"
 	   
     	/>
+    <Button
+        android:id="@+id/button_test_login"
+        android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="TestLogin"
+        />
 </LinearLayout>

@@ -12,10 +12,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -25,6 +27,7 @@ public class FrontActivity extends Activity {
 	private Button button_reg;
 	private Button button_test_sina;
 	private Button button_test_face;
+	private Button button_test_login;
 	
 	private EditText edit_user;
 	private EditText edit_passwd;
@@ -40,6 +43,7 @@ public class FrontActivity extends Activity {
         button_reg = (Button) findViewById(R.id.button_register);
         button_test_sina = (Button) findViewById(R.id.button_test_sina);
         button_test_face = (Button) findViewById(R.id.button_testface);
+        button_test_login = (Button) findViewById(R.id.button_test_login);
         
         edit_user = (EditText) findViewById(R.id.edit_username);
         edit_passwd = (EditText) findViewById(R.id.edit_username);
@@ -55,6 +59,13 @@ public class FrontActivity extends Activity {
 				Intent intent = new Intent();
 				intent.setClass(FrontActivity.this, FaceActivity.class);
 				startActivity(intent);
+			}
+		});
+        
+        button_test_login.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View view) {
+				showLoginDialog(FrontActivity.this);
 			}
 		});
         
@@ -177,6 +188,36 @@ public class FrontActivity extends Activity {
         
         builder.show(); 
     	
+    }
+    
+    private  void showLoginDialog(Context context) {
+    	 AlertDialog.Builder builder =new AlertDialog.Builder(context);
+         builder.setTitle("亲，请登录！");
+         LayoutInflater inflater = getLayoutInflater();
+         View layout = inflater.inflate(R.layout.dialog_login, (ViewGroup) findViewById(R.id.dialog_login));
+         builder.setView(layout);
+         builder.setPositiveButton("注册", new DialogInterface.OnClickListener() {
+			
+			public void onClick(DialogInterface arg0, int arg1) {
+				
+			}
+		});
+         builder.setNegativeButton("登录", new DialogInterface.OnClickListener() {
+			
+			public void onClick(DialogInterface arg0, int arg1) {
+				
+			}
+		});
+         
+         builder.setNeutralButton("取消", new DialogInterface.OnClickListener() {
+			
+			public void onClick(DialogInterface arg0, int arg1) {
+				
+			}
+		});
+
+         builder.show();
+         
     }
     
     
