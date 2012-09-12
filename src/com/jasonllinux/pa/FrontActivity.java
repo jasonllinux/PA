@@ -83,11 +83,13 @@ public class FrontActivity extends Activity {
         return true;
     }
 	
-//设置菜单监听器
+	
+	//设置菜单项监听器
     @Override
 	public boolean onOptionsItemSelected(MenuItem item) {
     	 switch (item.getItemId()) {  
     	 case R.id.menu_settings :
+    		 //转到设置页面
     		 goToSetting();
     		 break;
     	 default:
@@ -166,7 +168,7 @@ public class FrontActivity extends Activity {
     }
     
 
-    //TODO 修改布局文件
+    //推出app时候的dialog
     private void showExitDialog(Context context) {
 //    	System.out.println("show Dialog");
     	AlertDialog.Builder builder = new AlertDialog.Builder(context); 
@@ -187,9 +189,9 @@ public class FrontActivity extends Activity {
     			} });
         
         builder.show(); 
-    	
     }
     
+    //显示登录dialog
     private  void showLoginDialog(Context context) {
     	 AlertDialog.Builder builder =new AlertDialog.Builder(context);
          builder.setTitle("亲，请登录！");
@@ -199,12 +201,16 @@ public class FrontActivity extends Activity {
          builder.setPositiveButton("注册", new DialogInterface.OnClickListener() {
 			
 			public void onClick(DialogInterface arg0, int arg1) {
+				//TODO 跳转到注册页面
 				
 			}
 		});
          builder.setNegativeButton("登录", new DialogInterface.OnClickListener() {
 			
 			public void onClick(DialogInterface arg0, int arg1) {
+				//TODO 验证是否输入，用户名密码是否正确
+				//正确则读取用户信息，跳转
+				//不正确，清理，重新输入
 				
 			}
 		});
@@ -217,7 +223,11 @@ public class FrontActivity extends Activity {
 		});
 
          builder.show();
-         
+    }
+    
+    //TODO 显示注册页面
+    private void showRegDialog(Context context) {
+    	
     }
     
     
