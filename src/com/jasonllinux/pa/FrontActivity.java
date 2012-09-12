@@ -6,8 +6,11 @@ import com.jasonllinux.app.social.SinaAuthorizeActivity;
 import com.jasonllinux.app.user.User;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -28,11 +31,14 @@ public class FrontActivity extends Activity {
 	private Button button_test_sina;
 	private Button button_test_face;
 	private Button button_test_login;
+	private Button button_test_update;
 	
 	private EditText edit_user;
 	private EditText edit_passwd;
 	
 	private UserAuthDataSource userAuthDataBase;
+	
+	private ProgressDialog progressDialog;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,6 +50,7 @@ public class FrontActivity extends Activity {
         button_test_sina = (Button) findViewById(R.id.button_test_sina);
         button_test_face = (Button) findViewById(R.id.button_testface);
         button_test_login = (Button) findViewById(R.id.button_test_login);
+        button_test_update = (Button) findViewById(R.id.button_test_update_dialog);
         
         edit_user = (EditText) findViewById(R.id.edit_username);
         edit_passwd = (EditText) findViewById(R.id.edit_username);
@@ -70,7 +77,16 @@ public class FrontActivity extends Activity {
 		});
         
         
-        //db
+//        显示更新数据库
+        button_test_update.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View view) {
+				
+				showUpdateDialog(FrontActivity.this);
+			}
+		});
+        
+        //db new && open
         userAuthDataBase = new UserAuthDataSource(this);
         userAuthDataBase.open();
         
@@ -229,6 +245,60 @@ public class FrontActivity extends Activity {
     private void showRegDialog(Context context) {
     	
     }
+    
+    //显示更新数据库对话框
+    //环状进度条
+    private void showUpdateDialog(Context context) {
+//    	 AlertDialog.Builder builder =new AlertDialog.Builder(context);
+//         builder.setTitle("Update");
+//         LayoutInflater inflater = getLayoutInflater();
+//         
+//         builder.show();
+//    	ProgressDialog d = new P
+//    	ProgressDialog dialog = progressDialog;
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.setTitle("Update");
+        progressDialog.setMessage("正在升级数据库");
+        progressDialog.setIndeterminate(true);
+        progressDialog.setCancelable(true);
+        progressDialog.show();
+ 
+    
+    	new Thread(new Runnable() {
+			
+			public void run() {
+				try {
+					//休眠n秒
+					Thread.sleep(2 * 1000);
+					 handler.sendEmptyMessage(0);  
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}  
+				
+			}
+		}).start();
+//    	dialog.dismiss();
+    	//TODO 如何结束进程
+    	
+    }
+    
+    /*
+    * 用Handler来更新UI 
+    */
+    
+   private Handler handler = new Handler(){  
+ 
+       @Override  
+       public void handleMessage(Message msg) {  
+             
+           //关闭ProgressDialog  
+           progressDialog.dismiss();  
+             
+           //更新UI  
+//           statusTextView.setText("Completed!");  
+       }};  
+     
     
     
 }

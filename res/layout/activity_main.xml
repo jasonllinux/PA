@@ -78,4 +78,10 @@
 		android:layout_height="wrap_content"
 		android:text="TestLogin"
         />
+    <Button
+        android:id="@+id/button_test_update_dialog"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="TestUpdate"
+    />
 </LinearLayout>
