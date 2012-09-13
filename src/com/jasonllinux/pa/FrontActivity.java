@@ -32,6 +32,7 @@ public class FrontActivity extends Activity {
 	private Button button_test_face;
 	private Button button_test_login;
 	private Button button_test_update;
+	private Button button_test_about;
 	
 	private EditText edit_user;
 	private EditText edit_passwd;
@@ -51,6 +52,7 @@ public class FrontActivity extends Activity {
         button_test_face = (Button) findViewById(R.id.button_testface);
         button_test_login = (Button) findViewById(R.id.button_test_login);
         button_test_update = (Button) findViewById(R.id.button_test_update_dialog);
+        button_test_about = (Button) findViewById(R.id.button_test_about);
         
         edit_user = (EditText) findViewById(R.id.edit_username);
         edit_passwd = (EditText) findViewById(R.id.edit_username);
@@ -81,8 +83,17 @@ public class FrontActivity extends Activity {
         button_test_update.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View view) {
-				
+				//显示， 2秒恢复
 				showUpdateDialog(FrontActivity.this);
+			}
+		});
+        
+        button_test_about.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View arg0) {
+				Intent intent = new Intent();
+				intent.setClass(FrontActivity.this, AboutActivity.class);
+				startActivity(intent);
 			}
 		});
         
