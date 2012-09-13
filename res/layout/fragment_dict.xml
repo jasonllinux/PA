@@ -25,21 +25,35 @@
         android:textSize="40dp"
         />
     
+
+     
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
     <Button
+        android:id="@+id/button_dict_prev"
         android:text="Prev"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         />
     <Button
-        android:text="发音"
+        android:id="@+id/button_dict_done"
+        android:text="Done"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         />
     <Button
+        android:id="@+id/button_dict_next"
         android:text="Next"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         />
+	</LinearLayout>
+	
 
 
 </LinearLayout>
