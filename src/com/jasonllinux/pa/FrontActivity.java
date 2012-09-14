@@ -24,7 +24,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class FrontActivity extends Activity {
+public class FrontActivity extends Activity implements OnClickListener{
 	
 	private Button button_login ;
 	private Button button_reg;
@@ -33,6 +33,7 @@ public class FrontActivity extends Activity {
 	private Button button_test_login;
 	private Button button_test_update;
 	private Button button_test_about;
+	private Button button_test_word;
 	
 	private EditText edit_user;
 	private EditText edit_passwd;
@@ -53,9 +54,11 @@ public class FrontActivity extends Activity {
         button_test_login = (Button) findViewById(R.id.button_test_login);
         button_test_update = (Button) findViewById(R.id.button_test_update_dialog);
         button_test_about = (Button) findViewById(R.id.button_test_about);
+        button_test_word = (Button) findViewById(R.id.button_test_word);
         
-        edit_user = (EditText) findViewById(R.id.edit_username);
-        edit_passwd = (EditText) findViewById(R.id.edit_username);
+        
+//        edit_user = (EditText) findViewById(R.id.edit_username);
+//        edit_passwd = (EditText) findViewById(R.id.edit_username);
         
         //db -> new
         
@@ -96,6 +99,8 @@ public class FrontActivity extends Activity {
 				startActivity(intent);
 			}
 		});
+        
+        button_test_word.setOnClickListener(this);
         
         //db new && open
         userAuthDataBase = new UserAuthDataSource(this);
@@ -308,7 +313,22 @@ public class FrontActivity extends Activity {
              
            //更新UI  
 //           statusTextView.setText("Completed!");  
-       }};  
+       }};
+
+       
+public void onClick(View view) {
+	switch (view.getId()) {
+	case R.id.button_test_word:
+		Intent intent = new Intent();
+		intent.setClass(FrontActivity.this, WordActivity.class);
+		startActivity(intent);
+		break;
+
+	default:
+		break;
+	}
+	
+}  
      
     
     

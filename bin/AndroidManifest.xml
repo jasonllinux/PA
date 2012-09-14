@@ -73,7 +73,11 @@
             android:label="About"
             >
         </activity>
-    
+        <activity
+            android:name=".WordActivity"
+            android:label="Word"
+            >
+        </activity>
     </application>
     <!-- 关闭应用程序的权限 -->
 	
