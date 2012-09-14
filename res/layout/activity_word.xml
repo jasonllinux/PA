@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="亲，背单词了!"
+        android:textSize="40dp" 
+        android:textColor="#999999"
+        />
+    <TextView
+        android:id="@+id/word_word"
+        android:text="HelloWorld" 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        />
+     <TextView
+        android:id="@+id/word_tran"
+        android:text="你好世界" 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="40dp"
+        />
+    
+
+     
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+    <Button
+        android:id="@+id/button_dict_prev"
+        android:text="Prev"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        />
+    <Button
+        android:id="@+id/button_dict_done"
+        android:text="Done"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        />
+    <Button
+        android:id="@+id/button_dict_next"
+        android:text="Next"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        />
+	</LinearLayout>
+	
+
+
+</LinearLayout>
