@@ -42,6 +42,11 @@ public class WordActivity extends Activity implements OnClickListener {
 	private String currentWord;
 	private String currentPhonetics;
 	private String currentTranslation;
+	
+	//标签
+	private String WORD = "word"; 
+	private String PHONETICS = "phonetics";
+	private String TRANSLATION = "translation";
 
 	private DbAdapter mDbHelper; // 数据库适配器
 	private Cursor mDiaryCursor;
