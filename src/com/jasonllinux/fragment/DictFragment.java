@@ -28,7 +28,9 @@ public class DictFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
     	View view  =  inflater.inflate(R.layout.fragment_dict, container, false);
-
+    	
+    	//TODO init job
+    	
     	return view;
     	
     }
@@ -38,7 +40,12 @@ public class DictFragment extends Fragment{
     {
         super.onStop();
     }
-
+    
+    //显示单词
+    private void showWord() {
+    	
+    	
+    }
 
 
 }
