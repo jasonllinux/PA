@@ -9,53 +9,56 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:text="亲，背单词了!"
-        android:textSize="40dp" 
         android:textColor="#999999"
-        />
+        android:textSize="40dp" />
+
     <TextView
         android:id="@+id/word_word"
-        android:text="HelloWorld" 
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
-        />
-     <TextView
+        android:text="HelloWorld"
+        android:textSize="30dp" />
+
+    <TextView
+        android:id="@+id/word_phone"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="phone"
+        android:textSize="30dp" />
+
+    <TextView
         android:id="@+id/word_tran"
-        android:text="你好世界" 
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="40dp"
-        />
-    
+        android:text="你好世界"
+        android:textSize="40dp" />
 
-     
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal" >
-    <Button
-        android:id="@+id/button_dict_prev"
-        android:text="Prev"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        />
-    <Button
-        android:id="@+id/button_dict_done"
-        android:text="Done"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        />
-    <Button
-        android:id="@+id/button_dict_next"
-        android:text="Next"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        />
-	</LinearLayout>
-	
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal" >
 
+        <Button
+            android:id="@+id/button_dict_prev"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Prev" />
+
+        <Button
+            android:id="@+id/button_dict_done"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Done" />
+
+        <Button
+            android:id="@+id/button_dict_next"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Next" />
+    </LinearLayout>
 
 </LinearLayout>

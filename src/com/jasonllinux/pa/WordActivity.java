@@ -27,22 +27,19 @@ public class WordActivity extends Activity implements OnClickListener {
 	private Button button_next;
 
 	private TextView word_word;
+	private TextView word_phone;
 	private TextView word_tran;
 
 	private int currentWordNo; // 当前单词计数
 	private int totalWordCount; // 总共单词数量
 	private ArrayList<HashMap<String, Object>> words;
-	private Map<String, Object> WordMap;
+	private Map<String, Object> currentWord;
 
 	// 记录当前单词数据
 	private String thisWord = null;
 	private String thisPhonetics = null;
 	private String thisTranslation = null;
 
-	private String currentWord;
-	private String currentPhonetics;
-	private String currentTranslation;
-	
 	//标签
 	private String WORD = "word"; 
 	private String PHONETICS = "phonetics";
@@ -57,12 +54,14 @@ public class WordActivity extends Activity implements OnClickListener {
 		this.setContentView(R.layout.activity_word);
 
 		this.init();
+		
+		//TODO 获取LessonNo
 	}
 
 	private void init() {
 		init_widget();
-		init_data();
-		init_config();
+		init_words();
+//		init_config();
 
 	}
 
@@ -76,8 +75,9 @@ public class WordActivity extends Activity implements OnClickListener {
 		button_next.setOnClickListener(this);
 		button_prev.setOnClickListener(this);
 
-		word_word = (TextView) findViewById(R.id.word_word);
-		word_tran = (TextView) findViewById(R.id.word_tran);
+		word_word = (TextView) findViewById(R.id.word_word); //单词
+		word_phone = (TextView) findViewById(R.id.word_phone); //音标
+		word_tran = (TextView) findViewById(R.id.word_tran);  //翻译
 
 	}
 
@@ -86,10 +86,10 @@ public class WordActivity extends Activity implements OnClickListener {
 
 	}
 
-	// 初始化数据变量
-	private void init_data() {
+	//TODO  初始化数据变量
+	private void init_words() {
 		this.mDbHelper = new DbAdapter(this);
-		this.WordMap = new HashMap<String, Object>();
+		this.currentWord = new HashMap<String, Object>();
 		this.words = new ArrayList<HashMap<String, Object>>();
 
 		final ProgressDialog pd = new ProgressDialog(this);
@@ -99,65 +99,46 @@ public class WordActivity extends Activity implements OnClickListener {
 		pd.setOnDismissListener(new OnDismissListener() {
 
 			public void onDismiss(DialogInterface arg0) {
-				//init content
-				setInitContent();
-				mDbHelper.close();
+				if (words != null && words.size() > 0) {
+					totalWordCount = words.size();
+					// currentWordNo = 0;
+//					currentWordNo = Config.init().getPreviewWordIndex(
+//							currentLessonNo);// 获取上次记忆的单词位置
+					showWord();
+				}
 			}
 		});
 		pd.show();
 		//线程操作
 		new Thread() {
-
 			@Override
 			public void run() {
-				HashMap<String, Object> word = null;
-
-				String[] array = new String[3];
-
-				mDiaryCursor = mDbHelper.fetchAllWorkBook();
-				mDiaryCursor.moveToFirst();
-				if (!mDiaryCursor.isAfterLast()
-						&& (mDiaryCursor.getString(1) != null)) {
-
-					while (!mDiaryCursor.isAfterLast()) {
-
-						int nameColumnIndex;
-
-						nameColumnIndex = mDiaryCursor
-								.getColumnIndex(WordBook.Word);
-						array[0] = mDiaryCursor.getString(nameColumnIndex);
-
-						nameColumnIndex = mDiaryCursor
-								.getColumnIndex(WordBook.Phonetics);
-						array[1] = mDiaryCursor.getString(nameColumnIndex);
-
-						nameColumnIndex = mDiaryCursor
-								.getColumnIndex(WordBook.Translation);
-						array[2] = mDiaryCursor.getString(nameColumnIndex);
-
-						word = new HashMap<String, Object>();
-						word.put("单词", array[0]);
-						word.put("音标", array[1]);
-						word.put("解释", array[2]);
-						// 添加
-						words.add(word);
-						mDiaryCursor.moveToNext();
-					}
-
-				}
-
+				//TODO 获得所有的单词映射链表和个数
+//				words = 
+				totalWordCount =  words.size();
 				pd.dismiss();
 			}
 		}.start();
+		
+		
 	}
 
-	private void setInitContent() {
 
-	}
-
+	//显示单词
 	private void showWord() {
+		//TODO 详细化 
 		this.setTitle("Lesson");
 		// 取字典中的单词
+		currentWord = words.get(currentWordNo);
+		thisWord = (String) currentWord.get(WORD);
+		thisPhonetics = (String) currentWord.get(PHONETICS);
+		thisTranslation = (String) currentWord.get(TRANSLATION);
+		
+		//显示
+		this.word_word.setText(thisWord);
+		this.word_phone.setText(thisPhonetics);
+		this.word_tran.setText(thisTranslation);
+		
 
 		// 显示在文本框中
 
